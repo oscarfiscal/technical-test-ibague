@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EmployeeRequest;
+use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Employee;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -18,9 +19,10 @@ class EmployeeController extends Controller
     ) {
     }
 
-    public function index()
+    public function index(): View
     {
-        //
+        $employees = Employee::paginate(5);
+        return view('employees.index', compact('employees'));
     }
 
     /**
@@ -28,7 +30,7 @@ class EmployeeController extends Controller
      */
     public function create(): View
     {
-        return view('employee.create');
+        return view('employees.create');
     }
 
     /**
@@ -52,24 +54,26 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Employe $employe)
+    public function edit(Employee $employee): view
     {
-        //
+        return view('employees.edit', compact('employee'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Employe $employe)
+    public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        //
+        $employee->update($request->all());
+        return redirect()->route('employee.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Employe $employe)
+    public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return redirect()->route('employee.index');
     }
 }
