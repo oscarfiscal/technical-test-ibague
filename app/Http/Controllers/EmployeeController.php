@@ -14,7 +14,7 @@ class EmployeeController extends Controller
      * Display a listing of the resource.
      */
 
-     public function __construct(
+    public function __construct(
         private Employee $employee
     ) {
     }

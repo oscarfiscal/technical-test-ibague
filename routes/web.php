@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepartamentController;
 use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,4 @@ Route::middleware([
 });
 
 Route::resource('/employee', EmployeeController::class);
+Route::resource('/departament', DepartamentController::class);
