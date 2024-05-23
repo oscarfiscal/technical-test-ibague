@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DepartamentController;
 use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,9 +13,12 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
+    Route::get('/employee', function () {
+        return view('employee.index');
     })->name('dashboard');
+    Route::resource('/employee', EmployeeController::class);
+    Route::get('/employees/search', [EmployeeController::class, 'searchEmployees'])->name('search');
+    Route::resource('/departament', DepartamentController::class);
 });
 
-Route::resource('/employee', EmployeeController::class);
+
