@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreDepartamentRequest;
+use App\Http\Requests\UpdateDepartamentRequest;
 use App\Models\Departament;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
@@ -38,23 +39,24 @@ class DepartamentController extends Controller
     {
         Departament::create($request->all());
 
-        return redirect()->route('departament.index')->with('success', 'Employee created successfully.');
+        return redirect()->route('departament.index')->with('success', 'departament created successfully.');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Departament $departament)
+    public function edit(Departament $departament): view
     {
-        //
+        return view('departament.edit', compact('departament'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Departament $departament)
+    public function update(StoreDepartamentRequest $request, Departament $departament)
     {
-        //
+        $departament->update($request->all());
+        return redirect()->route('departament.index');
     }
 
     /**
