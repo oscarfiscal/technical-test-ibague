@@ -64,6 +64,7 @@ class DepartamentController extends Controller
      */
     public function destroy(Departament $departament)
     {
-        //
+        $departament->delete();
+        return redirect()->route('departament.index');
     }
 }
