@@ -20,7 +20,8 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        //
+        $employees = Employee::paginate(5);
+        return view('employees.index', compact('employees'));
     }
 
     /**
@@ -28,7 +29,7 @@ class EmployeeController extends Controller
      */
     public function create(): View
     {
-        return view('employee.create');
+        return view('employees.create');
     }
 
     /**
