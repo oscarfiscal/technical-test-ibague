@@ -6,16 +6,21 @@ use App\Http\Requests\StoreDepartamentRequest;
 use App\Models\Departament;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
-use Symfony\Component\ErrorHandler\Debug;
 
 class DepartamentController extends Controller
 {
+
+    public function __construct(
+        private Departament $departament
+    ) {
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index():view
     {
-        //
+        $departaments = Departament::paginate(5);
+        return view('departament.index', compact('departaments'));
     }
 
     /**
@@ -34,14 +39,6 @@ class DepartamentController extends Controller
         Departament::create($request->all());
 
         return redirect()->route('departament.index')->with('success', 'Employee created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Departament $departament)
-    {
-        //
     }
 
     /**

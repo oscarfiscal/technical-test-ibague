@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Employee;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
@@ -36,7 +36,7 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(EmployeeRequest $request)
+    public function store(EmployeeRequest $request): RedirectResponse
     {
         Employee::create($request->all());
 
