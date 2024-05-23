@@ -16,7 +16,8 @@ Route::middleware([
     Route::get('/employee', function () {
         return view('employee.index');
     })->name('dashboard');
+    Route::resource('/employee', EmployeeController::class);
+    Route::resource('/departament', DepartamentController::class);
 });
 
-Route::resource('/employee', EmployeeController::class);
-Route::resource('/departament', DepartamentController::class);
+
