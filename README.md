@@ -1,6 +1,6 @@
 El repositorio contiene:
 
--   **_Laravel_** - RESTFULL
+-   **_Laravel_** 
 
 # Descripción del proyecto 🚀
 
@@ -42,12 +42,13 @@ Estas instrucciones te permitirán obtener una copia del proyecto en funcionamie
 
 ### Usar XAMPP
 
--    ## Instalar XAMPP**  
+-  ## Instalar XAMPP 
    XAMPP es una distribución de Apache fácil de instalar que contiene MariaDB, PHP y Perl. Puedes descargarlo desde [XAMPP](https://www.apachefriends.org/es/index.html).
 
-2. **Configurar XAMPP**  
+- **Configurar XAMPP**  
    Una vez instalado XAMPP, inicia el panel de control de XAMPP y asegúrate de que Apache y MySQL estén corriendo.
-
+-  ## Instalar Node.js  
+   Recuerden tener instalado Node.js Een sus computadoras ya que es necesario para compilar los activos frontend. Puedes descargarlo desde [NODEJS](https://nodejs.org/en/download/prebuilt-installer).
 -   ## Clonar proyecto
 
     ```shell
@@ -80,6 +81,12 @@ Estas instrucciones te permitirán obtener una copia del proyecto en funcionamie
 
     ```shell
     php artisan serve
+    ```
+ -   ## Correr frontend
+   **Debes abrir una nueva terminal**
+
+    ```shell
+    npm run dev
     ```
 
     # Diagrama de la estructura de la base de datos
