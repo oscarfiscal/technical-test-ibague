@@ -64,6 +64,16 @@
                             <p class="text-red-500 text-xs italic mt-1">{{ $errors->first('position') }}</p>
                             @endif
                         </div>
+
+                        <div class="grid grid-cols-1">
+                                <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Selecciona el Departamento:</label>
+                                <select class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 " id="Departamento" name="departament_id">
+                                    <option value="" disabled selected>Selecciona un Departamento</option>
+                                    @foreach ($departaments as $departament)
+                                    <option value="{{ $departament->id }}" {{ $employee->departament->id == $departament->id ? 'selected' : '' }}>{{ $departament->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                     </div>
 
                     <div class='flex items-center justify-center  md:gap-8 gap-4 pt-5 pb-5'>

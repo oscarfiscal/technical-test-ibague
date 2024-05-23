@@ -42,6 +42,7 @@
                                         <th scope="col">Correo</th>
                                         <th scope="col">Celular</th>
                                         <th scope="col">Cargo</th>
+                                        <th scope="col">Departamento</th>
                                         <th scope="col">Fecha De Creacion</th>
                                         <th scope="col">Aciones</th>
                                     </tr>
@@ -54,6 +55,7 @@
                                         <td scope="row">{{$employee->email}}</td>
                                         <td scope="row">{{$employee->phone}}</td>
                                         <td scope="row">{{$employee->position}}</td>
+                                        <td scope="row">{{$employee->departament->name}}</td>
                                         <td scope="row">{{$employee->created_at}}</td>
                                         <td scope="row">
                                             <div class="flex">

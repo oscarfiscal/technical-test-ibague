@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use App\Models\Departament;
 use App\Models\Employee;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\View;
@@ -30,7 +31,8 @@ class EmployeeController extends Controller
      */
     public function create(): View
     {
-        return view('employees.create');
+        $departaments = Departament::all();
+        return view('employees.create',compact('departaments'));
     }
 
     /**
@@ -49,7 +51,8 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee): view
     {
-        return view('employees.edit', compact('employee'));
+        $departaments = Departament::all();
+        return view('employees.edit', compact('employee','departaments'));
     }
 
     /**
