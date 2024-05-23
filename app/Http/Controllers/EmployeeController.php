@@ -6,8 +6,10 @@ use App\Http\Requests\EmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
 use App\Models\Departament;
 use App\Models\Employee;
+use App\Respository\EmployeeRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
@@ -16,7 +18,8 @@ class EmployeeController extends Controller
      */
 
     public function __construct(
-        private Employee $employee
+        private Employee $employee,
+        private EmployeeRepository $repository
     ) {
     }
 
@@ -71,5 +74,13 @@ class EmployeeController extends Controller
     {
         $employee->delete();
         return redirect()->route('employee.index');
+    }
+
+    public function searchEmployees(Request $request)
+    {
+        $search = $request->input('search');
+        $employees = $this->repository->search($search);
+
+        return view('employees.index', compact('employees', 'search'));
     }
 }
