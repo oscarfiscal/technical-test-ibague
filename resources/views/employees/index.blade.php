@@ -1,3 +1,9 @@
+<x-app-layout>
+<x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Modulo empleados') }}
+        </h2>
+    </x-slot>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,6 +87,7 @@
 </body>
 
 </html>
+</x-app-layout>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
