@@ -77,6 +77,17 @@ Estas instrucciones te permitirán obtener una copia del proyecto en funcionamie
     php artisan migrate
     ```
 
+-   ## Correr test unitarios
+
+      ```shell
+      php artisan test
+      ```
+-   ## correr seeders para los datos de prueba
+
+      ```shell
+      php artisan db:seed     
+      ```
+
 -   ## Correr el proyecto en local
 
     ```shell
@@ -85,14 +96,18 @@ Estas instrucciones te permitirán obtener una copia del proyecto en funcionamie
  -   ## Correr frontend
    **Debes abrir una nueva terminal**
 
-    ```shell
+   ```shell
     npm run dev
-    ```
+   ```
 
     # Diagrama de la estructura de la base de datos
     # Explicación de las tablas:
     
-    -  employees: firts_name,last_name,birth_date,email,phone,genre
+    -  employees: departament_id, firts_name,last_name,email,phone,position
     -  departments: name,description
    # Relaciones
    - La tabla employees tiene una relación de muchos a uno (Many-to-One) con la tabla departments. Esto significa que cada empleado pertenece a un solo departamento, pero un departamento puede tener muchos empleados. Esta relación se establece mediante la clave foránea department_id en la tabla employees, que hace referencia al campo id de la tabla departments.
+
+   # Observaciones
+
+   despues de haber instalado xampp o el que sea de tu preferencia debes crear la base de datos con el nombre "technical_test_ib" y luego si correr las migraciones

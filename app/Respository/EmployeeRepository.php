@@ -16,14 +16,14 @@ class EmployeeRepository
     {
     }
 
-    public function search(string $search = null , int $page = 1, int $perPage = 5): Paginator
+    public function search(string $search = null): Paginator
     {
         $employees = Employee::with('departament')
             ->where('first_name', 'like', '%' . $search . '%')
             ->orWhereHas('departament', function ($query) use ($search) {
                 $query->where('name', 'like', '%' . $search . '%');
             })
-            ->paginate($perPage, ['*'], 'page', $page);
+            ->paginate(5);
 
         return $employees;
     }
