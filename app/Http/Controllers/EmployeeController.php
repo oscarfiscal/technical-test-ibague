@@ -58,6 +58,11 @@ class EmployeeController extends Controller
         return view('employees.edit', compact('employee','departaments'));
     }
 
+    public function show(Employee $employee): view
+    {
+        return view('employees.show', compact('employee'));
+    }
+
     /**
      * Update the specified resource in storage.
      */

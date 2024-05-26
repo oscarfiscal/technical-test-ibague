@@ -73,6 +73,7 @@ class EmployeeTest extends TestCase
     {
         $this->withoutMiddleware();
         $this->withoutExceptionHandling();
+        
         $employee = Employee::factory()->create();
 
         $response = $this->delete('/employee/' . $employee->id);
@@ -80,6 +81,23 @@ class EmployeeTest extends TestCase
       
         $response->assertStatus(302);
      
+    }
+
+    public function test_it_displays_a_single_employee()
+    {
+        $this->withoutMiddleware();
+        $this->withoutExceptionHandling();
+         //se crea usuario para luego loguearlo
+         $user = User::factory()->create();
+
+        $employee = Employee::factory()->create();
+
+        $response = $this->actingAs($user)->get('/employee/' . $employee->id);
+
+        $response->assertStatus(200);
+        $response->assertViewIs('employees.show');
+
+      
     }
 
     public function test_it_updates_an_employee()
