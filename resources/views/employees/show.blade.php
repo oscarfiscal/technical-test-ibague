@@ -49,11 +49,7 @@
                         <div class="grid grid-cols-1">
                             <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold">Cargo:</label>
                             <input readonly value="{{ $employee->position }}" name="position" class="py-2 px-3 rounded-lg border-2 border-purple-300 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-600 " type="text" />
-                          
-
                         </div>
-
-                        
 
                         <div class='flex justify-center  md:gap-8 gap-4 pt-5 pb-5'>
 

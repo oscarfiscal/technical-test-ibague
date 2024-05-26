@@ -86,6 +86,22 @@ class DepartamentTest extends TestCase
 
         $response->assertStatus(302);
        
+    }
+
+    public function test_it_displays_a_single_employee()
+    {
+        $this->withoutMiddleware();
+        $this->withoutExceptionHandling();
+         //se crea usuario para luego loguearlo
+         $user = User::factory()->create();
+
+        $departament = Departament::factory()->create();
+
+        $response = $this->actingAs($user)->get('/departament/' . $departament->id);
+
+        $response->assertStatus(200);
+        $response->assertViewIs('departament.show');
+
       
     }
 

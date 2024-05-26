@@ -31,16 +31,16 @@
                             <h1 class="text-4xl text-center font-bold text-purple-700 mb-6">Información sobre Empleados</h2>
 
 
-                                <form action="{{ route('search') }}" method="GET" class="max-w-lg mx-auto flex items-center mb-6">
-                                    <div class="flex flex-wrap mr-4">
-                                        <label for="search" class="block text-gray-700 text-sm font-bold mb-2">
-                                            Buscar por nombre o departamento:
-                                        </label>
-                                        <input type="text" class="form-input w-full px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:shadow-outline" id="search" name="search" value="{{ request()->get('search') }}">
-                                    </div>
+                            <form action="{{ route('search') }}" method="GET" class="max-w-lg mx-auto flex items-center mb-6">
+                                <div class="flex flex-wrap mr-4">
+                                    <label for="search" class="block text-gray-700 text-sm font-bold mb-2">
+                                        Buscar por nombre o departamento:
+                                    </label>
+                                    <input type="text" class="form-input w-full px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:shadow-outline" id="search" name="search" value="{{ request()->get('search') }}">
+                                </div>
 
-                                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Buscar</button>
-                                </form>
+                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Buscar</button>
+                            </form>
 
                                 <a type="button" href="{{ route('employee.create') }}" style="float: right;" class="bg-indigo-600 px-12 py-2 rounded text-gray-200 font-semibold hover:bg-indigo-800 transition duration-200 each-in-out">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -78,22 +78,21 @@
                                                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                         </svg>
                                                     </a>
-
+                                                
                                                     <a href="{{ route('employee.show', $employee->id) }}" class="btn btn-primary mr-2">
-                                                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                        <svg class="w-6 h-6 text-gray-800 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                             <path stroke="currentColor" stroke-width="2" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
                                                             <path stroke="currentColor" stroke-width="2" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                                         </svg>
-
                                                     </a>
-
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" style="background-color:red;" class="btn btn-danger">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
-                                                        </svg>
-                                                    </button>
+                                                    <form action="{{ route('employee.destroy', $employee->id) }}" method="POST" class="formEliminar">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" style="background-color:red;" class="btn btn-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                                <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
+                                                            </svg>
+                                                        </button>
                                                     </form>
                                                 </div>
                                             </td>

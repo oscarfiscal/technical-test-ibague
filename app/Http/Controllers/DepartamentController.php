@@ -50,6 +50,11 @@ class DepartamentController extends Controller
         return view('departament.edit', compact('departament'));
     }
 
+    public function show(Departament $departament): view
+    {
+        return view('departament.show', compact('departament'));
+    }
+
     /**
      * Update the specified resource in storage.
      */
